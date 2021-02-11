@@ -163,8 +163,6 @@ function articleMaker(articleObject) {
   article.appendChild(p3);
   article.appendChild(expandButton);
 
-
-  console.log(article)
   return article;
 
 }
