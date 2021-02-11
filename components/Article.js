@@ -86,6 +86,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'The secret of life',
+    date: 'September, 21, 1996',
+    firstParagraph: `Dream`,
+
+    secondParagraph: `Do`,
+
+    thirdParagraph: `Fight`
   }
 ];
 
@@ -160,4 +169,7 @@ function articleMaker(articleObject) {
 
 }
 
-articleMaker(data[0]);
+data.forEach(object => {
+  const articles = document.querySelector(".articles");
+  articles.appendChild(articleMaker(object));
+})
