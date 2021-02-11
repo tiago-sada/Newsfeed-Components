@@ -117,6 +117,7 @@ const data = [
 */
 
 function articleMaker(articleObject) {
+  //create elements
   const article = document.createElement("div");
   const title = document.createElement("h2");
   const date = document.createElement("p");
@@ -125,10 +126,12 @@ function articleMaker(articleObject) {
   const p3 = document.createElement("p");
   const expandButton = document.createElement("span");
 
+  //add classes
   article.classList.add("article");
   date.classList.add("date");
   expandButton.classList.add("expandButton");
 
+  //set text on elements
   title.textContent = articleObject.title;
   date.textContent = articleObject.date;
   p1.textContent = articleObject.firstParagraph;
@@ -136,6 +139,14 @@ function articleMaker(articleObject) {
   p3.textContent = articleObject.thirdParagraph;
   expandButton.textContent = "+";
 
+  //add listeners
+  expandButton.addEventListener("click", event => {
+    console.log(`Before: ${article.classList}`)
+    article.classList.toggle("article-open")
+    console.log(`After: ${article.classList}`)
+  });
+
+  //add elements to article
   article.appendChild(title);
   article.appendChild(date);
   article.appendChild(p1);
