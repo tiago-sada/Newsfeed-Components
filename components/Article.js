@@ -86,6 +86,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'The secret of life',
+    date: 'September, 21, 1996',
+    firstParagraph: `Dream`,
+
+    secondParagraph: `Do`,
+
+    thirdParagraph: `Fight`
   }
 ];
 
@@ -103,6 +112,7 @@ const data = [
     <span class="expandButton">+</span>
   </div>
 
+
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
@@ -114,3 +124,50 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(articleObject) {
+  //create elements
+  const article = document.createElement("div");
+  const title = document.createElement("h2");
+  const date = document.createElement("p");
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  const expandButton = document.createElement("span");
+
+  //add classes
+  article.classList.add("article");
+  date.classList.add("date");
+  expandButton.classList.add("expandButton");
+
+  //set text on elements
+  title.textContent = articleObject.title;
+  date.textContent = articleObject.date;
+  p1.textContent = articleObject.firstParagraph;
+  p2.textContent = articleObject.secondParagraph;
+  p3.textContent = articleObject.thirdParagraph;
+  expandButton.textContent = "+";
+
+  //add listeners
+  expandButton.addEventListener("click", event => {
+    console.log(`Before: ${article.classList}`)
+    article.classList.toggle("article-open")
+    console.log(`After: ${article.classList}`)
+  });
+
+  //add elements to article
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(expandButton);
+
+  return article;
+
+}
+
+data.forEach(object => {
+  const articles = document.querySelector(".articles");
+  articles.appendChild(articleMaker(object));
+})
